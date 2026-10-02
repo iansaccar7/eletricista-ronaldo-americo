@@ -15,11 +15,12 @@
       content="Ronaldo mostra o problema com fotos e vídeos, explica os riscos e cuida do acabamento. Para começar, diga quando você prefere receber a visita."
     />
     <meta property="og:type" content="website" />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="motion.css" />
-    <script src="motion.js" defer></script>
+    <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css?v=3" />
+    <script src="script.js?v=3" defer></script>
+    <link rel="stylesheet" href="motion.css?v=3" />
+    <link rel="stylesheet" href="design.css?v=3" />
+    <script src="motion.js?v=3" defer></script>
   </head>
   <body class="ronaldo">
     <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -46,6 +47,51 @@
     </header>
     <main id="conteudo">
       <section class="hero" id="inicio">
+        <div class="hero-fx" aria-hidden="true">
+          <span class="room-light"></span>
+          <svg class="lamp" viewBox="0 0 90 250">
+            <defs>
+              <linearGradient id="metal" x1="0" x2="1">
+                <stop offset="0" stop-color="#3a3e43" />
+                <stop offset="0.45" stop-color="#9aa0a6" />
+                <stop offset="1" stop-color="#2c2f33" />
+              </linearGradient>
+              <radialGradient id="glass" cx="0.45" cy="0.55" r="0.6">
+                <stop offset="0" stop-color="#fff6d6" />
+                <stop offset="0.45" stop-color="#ffd27a" stop-opacity="0.85" />
+                <stop offset="1" stop-color="#c98600" stop-opacity="0.25" />
+              </radialGradient>
+              <filter id="glow" x="-1" y="-1" width="3" height="3">
+                <feGaussianBlur stdDeviation="2.2" result="b" />
+                <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+            <path class="lamp-cord" d="M45 0V146" />
+            <rect x="35" y="144" width="20" height="26" rx="3" fill="url(#metal)" />
+            <path class="lamp-ridges" d="M35 151h20M35 157h20M35 163h20" />
+            <path class="lamp-bulb" d="M37 170h16c0 10 14 18 14 36a22 22 0 0 1-44 0c0-18 14-26 14-36Z" fill="url(#glass)" />
+            <path class="lamp-filament" d="M41 172v18M49 172v18M41 190q2-7 4 0t4 0" filter="url(#glow)" />
+          </svg>
+          <div class="wire">
+            <svg viewBox="0 0 120 270">
+              <defs>
+                <linearGradient id="copper" x1="0" x2="1">
+                  <stop offset="0" stop-color="#8a4512" />
+                  <stop offset="0.5" stop-color="#f3b46b" />
+                  <stop offset="1" stop-color="#a2551b" />
+                </linearGradient>
+              </defs>
+              <path class="cable-shadow" d="M60 0C60 60 18 92 38 150C54 196 92 200 86 236" />
+              <path class="cable-body" d="M60 0C60 60 18 92 38 150C54 196 92 200 86 236" />
+              <path class="cable-shine" d="M58 0C58 60 16 92 36 150C52 194 89 199 84 234" />
+              <path class="cable-cut" d="M80 233l12 6" />
+              <path class="copper" d="M86 238l-8 16M86 238l0 18M86 238l9 14M86 238l-3 17M86 238l5 17" stroke="url(#copper)" />
+            </svg>
+            <span class="wire-tip"></span>
+          </div>
+          <canvas class="zap"></canvas>
+          <span class="flash"></span>
+        </div>
         <div class="wrap">
           <div class="electric-top">
             <p class="location">Jardim São Paulo · Zona Norte</p>
@@ -87,7 +133,7 @@
       <section class="section budget" id="orcamento">
         <div class="wrap budget-grid">
           <div class="budget-copy">
-            <span class="section-kicker">Agendar visita</span>
+            <span class="section-kicker">[ 01 ] Agendar visita</span>
             <h2>Vamos combinar<br />a sua visita?</h2>
             <p>
               Escolha o serviço e informe o dia e o período que funcionam para você. O agendamento
@@ -213,7 +259,7 @@
       </section>
       <section id="servicos" class="section">
         <div class="wrap">
-          <div class="section-head">
+          <div class="section-head" data-tag="[ 02 ] Serviços">
             <h2>Da fiação<br />à iluminação.</h2>
           </div>
           <div class="service-list">
@@ -256,7 +302,7 @@
       </section>
       <section id="como-funciona" class="section">
         <div class="wrap">
-          <div class="section-head">
+          <div class="section-head" data-tag="[ 03 ] Como funciona">
             <h2>Você acompanha<br />cada etapa.</h2>
           </div>
           <div class="steps-grid">
@@ -280,7 +326,7 @@
       </section>
       <section id="avaliacoes" class="section quote-section">
         <div class="wrap">
-          <div class="section-head">
+          <div class="section-head" data-tag="[ 04 ] Avaliações">
             <h2>Quem chamou<br />conta como foi.</h2>
             <p>Trechos das avaliações de clientes no Google.</p>
           </div>

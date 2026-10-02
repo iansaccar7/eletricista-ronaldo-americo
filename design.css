@@ -1,0 +1,326 @@
+/* Linguagem industrial: grade técnica, caixa alta, etiquetas monoespaçadas e cantos cortados. */
+:root {
+  --steel: #15171a;
+  --steel-line: #2f3338;
+  --amber: #f2a900;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --cut: 18px;
+  --chamfer: polygon(
+    0 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut))
+  );
+}
+h1,
+h2 {
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+h3 {
+  letter-spacing: -0.02em;
+}
+.section-kicker,
+.section-head[data-tag]::before,
+.note-label,
+.location,
+.electric-top > p,
+.nav a,
+.field label,
+.form-note,
+.quotes cite,
+.contact h3,
+.footer-bottom,
+.step-num {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.section-head[data-tag]::before {
+  content: attr(data-tag);
+  display: block;
+  margin-bottom: 18px;
+  font-size: 12px;
+  color: var(--accent-text);
+}
+.section-head {
+  display: block;
+}
+.section-head > p {
+  margin-top: 16px;
+}
+
+/* Grade de desenho técnico nas seções claras */
+#servicos,
+.budget {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(rgba(37, 41, 34, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 41, 34, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Cabeçalho */
+.top {
+  border-bottom: 1px solid var(--steel-line);
+}
+.nav {
+  counter-reset: nav;
+}
+.nav a {
+  counter-increment: nav;
+  font-size: 11px;
+}
+.nav a::before {
+  content: "0" counter(nav);
+  margin-right: 8px;
+  color: var(--amber);
+}
+.top-cta {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  border-color: var(--amber);
+}
+
+/* Topo */
+.hero {
+  padding-bottom: 0;
+}
+.electric-top {
+  border-top: 0;
+  border-bottom: 1px solid var(--steel-line);
+}
+.electric-top > p {
+  font-size: 11px;
+}
+.electric-cover {
+  display: block;
+  padding-top: 56px;
+}
+.electric-main h1 {
+  font-size: clamp(54px, 7.6vw, 116px);
+  max-width: 11ch;
+}
+.electric-main .intro {
+  max-width: 42ch;
+}
+.button {
+  border-radius: 0;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 12px;
+}
+.hero .button {
+  box-shadow: none;
+}
+.electric-notes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 64px;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--steel-line);
+}
+.electric-notes > div {
+  border-top: 0;
+  border-right: 1px solid var(--steel-line);
+  padding: 26px 28px 30px;
+}
+.electric-notes > div:last-child {
+  border-right: 0;
+}
+.electric-notes > .electric-proof {
+  background: var(--amber);
+  color: var(--steel);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+}
+.electric-notes .proof strong {
+  font-size: 64px;
+  line-height: 1;
+}
+.electric-notes .proof span {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+.hours,
+.electric-detail {
+  font-size: 30px;
+  line-height: 1.1;
+}
+
+/* Agendar visita */
+.budget {
+  padding-block: 96px;
+}
+.budget-copy h2 {
+  font-size: clamp(38px, 4vw, 56px);
+}
+.form-box {
+  background: #fffefa;
+  border: 1px solid var(--ink);
+  clip-path: var(--chamfer);
+  padding: 36px;
+}
+.field label {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+/* Serviços: células de uma grade, com código */
+.service-list {
+  gap: 0;
+  counter-reset: svc;
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+}
+.service,
+.service-featured {
+  counter-increment: svc;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 30px;
+  background: rgba(255, 254, 250, 0.82);
+}
+.service {
+  border-top: 0;
+}
+.service::before,
+.service-featured::before {
+  content: "S/0" counter(svc);
+  display: block;
+  margin-bottom: 28px;
+  font: 11px var(--mono);
+  letter-spacing: 0.08em;
+  color: var(--accent-text);
+}
+.service-featured {
+  background: var(--amber);
+  clip-path: polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%);
+}
+.service-featured::before {
+  color: var(--steel);
+}
+.service-featured h3 {
+  text-transform: uppercase;
+  font-size: 30px;
+  line-height: 1;
+}
+
+/* Como funciona: faixa de aço */
+#como-funciona {
+  background: var(--steel);
+  color: #f2efe6;
+  --ink: #f2efe6;
+  --muted: #a7aaa2;
+  --line: var(--steel-line);
+  --accent-text: var(--amber);
+}
+.steps-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--steel-line);
+}
+.step {
+  display: block;
+  border-top: 0;
+  border-right: 1px solid var(--steel-line);
+  padding: 34px 30px 40px;
+}
+.step:last-child {
+  border-right: 0;
+}
+.step-num {
+  display: block;
+  font-size: 54px;
+  letter-spacing: -0.02em;
+  color: var(--amber);
+  margin-bottom: 34px;
+}
+.step h3 {
+  margin-bottom: 14px;
+}
+html[data-motion="enabled"] .steps-grid::after {
+  display: none;
+}
+
+/* Avaliações: bloco âmbar inteiro */
+.quote-section {
+  background: var(--amber);
+  color: var(--steel);
+  --ink: var(--steel);
+  --muted: #3a3118;
+  --accent-text: var(--steel);
+}
+.quote-mark {
+  color: var(--steel);
+}
+.quotes cite {
+  font-size: 11px;
+}
+
+/* Rodapé em aço */
+.contact {
+  background: var(--steel);
+  color: #f2efe6;
+  --muted: #a7aaa2;
+  --line: var(--steel-line);
+  border-top: 4px solid var(--amber);
+}
+.contact h2 {
+  text-transform: uppercase;
+}
+
+@media (max-width: 1000px) {
+  .electric-notes {
+    grid-template-columns: 1fr 1fr;
+  }
+  .electric-notes > div:last-child {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--steel-line);
+  }
+}
+@media (max-width: 760px) {
+  .electric-cover {
+    padding-top: 36px;
+  }
+  .electric-notes {
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+  }
+  .electric-notes > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--steel-line);
+    padding: 22px 0;
+  }
+  .electric-notes > .electric-proof {
+    padding: 22px 20px;
+  }
+  .form-box {
+    padding: 26px 20px;
+  }
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+  .step {
+    border-right: 0;
+    border-bottom: 1px solid var(--steel-line);
+    padding: 28px 0;
+  }
+  .step-num {
+    margin-bottom: 18px;
+  }
+  .service,
+  .service-featured {
+    padding: 24px 20px;
+  }
+}
